@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Trading Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <div class="sidebar__logo">⊜ Journal</div>
+
+        <nav class="sidebar__nav">
+            <div class="sidebar__section-title">Trading</div>
+            <a href="dashboard.html" class="sidebar__link sidebar__link--active">Dashboard</a>
+            <a href="trades.html" class="sidebar__link">My Trades</a>
+            <a href="assets.html" class="sidebar__link">Assets</a>
+        </nav>
+
+        <nav class="sidebar__nav">
+            <div class="sidebar__section-title">Admin</div>
+            <a href="users.html" class="sidebar__link">Users</a>
+        </nav>
+
+        <nav class="sidebar__nav" style="margin-top: auto;">
+            <a href="login.html" class="sidebar__link">Logout</a>
+        </nav>
+    </aside>
+
+    <!-- ======= HEADER ======= -->
+    <header class="header">
+        <div class="header__title">Dashboard</div>
+        <div class="header__actions">
+            <button class="btn btn--ghost btn--sm">⚙ Settings</button>
+            <div class="header__user">
+                <div class="header__avatar">MM</div>
+                <span>Maksym</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======= MAIN ======= -->
+    <main class="main">
+        <div class="container">
+
+            <div class="page-header">
+                <div>
+                    <h1 class="page-header__title">Welcome back, Maksym</h1>
+                    <p class="page-header__subtitle">Performance overview · last 30 days</p>
+                </div>
+                <a href="trades.html" class="btn btn--primary">+ Log a Trade</a>
+            </div>
+
+            <!-- KPI cards -->
+            <div class="grid grid--cols-4" style="margin-bottom: 24px;">
+                <div class="kpi-card kpi-card--profit">
+                    <div class="kpi-card__label">Total P&L</div>
+                    <div class="kpi-card__value">+$815.50</div>
+                    <div class="kpi-card__delta kpi-card__delta--profit">▲ 12.4% vs prev</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-card__label">Win Rate</div>
+                    <div class="kpi-card__value">66.7%</div>
+                    <div class="kpi-card__delta kpi-card__delta--profit">▲ 4 of 6 closed</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-card__label">Total Trades</div>
+                    <div class="kpi-card__value">8</div>
+                    <div class="kpi-card__delta">2 open · 6 closed</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-card__label">Profit Factor</div>
+                    <div class="kpi-card__value">3.0</div>
+                    <div class="kpi-card__delta kpi-card__delta--profit">▲ healthy ratio</div>
+                </div>
+            </div>
+
+            <!-- Equity curve -->
+            <div class="chart-card">
+                <div class="chart-card__header">
+                    <div class="chart-card__title">Equity Curve</div>
+                    <div class="chart-card__tabs">
+                        <div class="chart-card__tab">7D</div>
+                        <div class="chart-card__tab chart-card__tab--active">30D</div>
+                        <div class="chart-card__tab">90D</div>
+                        <div class="chart-card__tab">All</div>
+                    </div>
+                </div>
+                <div class="chart-card__placeholder">[ chart placeholder — буде в Lab 4 ]</div>
+            </div>
+
+            <div class="grid grid--cols-2">
+
+                <div class="recent-trades">
+                    <div class="recent-trades__header">
+                        <div class="recent-trades__title">Recent trades</div>
+                        <a href="trades.html" class="btn btn--ghost btn--sm">View all →</a>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Asset</th>
+                                <th>Side</th>
+                                <th class="table__num">P&L</th>
+                                <th>Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><strong>BTC</strong></td>
+                                <td><span class="badge badge--buy">Buy</span></td>
+                                <td class="table__profit">+$350.00</td>
+                                <td>Apr 22</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SOL</strong></td>
+                                <td><span class="badge badge--buy">Buy</span></td>
+                                <td class="table__profit">+$230.00</td>
+                                <td>May 1</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AAPL</strong></td>
+                                <td><span class="badge badge--sell">Sell</span></td>
+                                <td class="table__profit">+$140.00</td>
+                                <td>May 3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ETH</strong></td>
+                                <td><span class="badge badge--buy">Buy</span></td>
+                                <td class="table__loss">-$225.00</td>
+                                <td>Apr 23</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TSLA</strong></td>
+                                <td><span class="badge badge--buy">Buy</span></td>
+                                <td class="table__loss">-$50.00</td>
+                                <td>May 2</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- By asset -->
+                <div class="card">
+                    <div class="card__header">
+                        <div class="card__title">By asset</div>
+                    </div>
+
+                    <div class="asset-row">
+                        <div class="asset-row__symbol">
+                            <div class="asset-row__icon">B</div>
+                            <div>BTC</div>
+                        </div>
+                        <div class="asset-row__stats">
+                            <div class="asset-row__stat">
+                                <div class="asset-row__stat-label">Trades</div>
+                                <div class="asset-row__stat-value">1</div>
+                            </div>
+                            <div class="asset-row__stat">
+                                <div class="asset-row__stat-label">P&L</div>
+                                <div class="asset-row__stat-value table__profit">+$350</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="asset-row">
+                        <div class="asset-row__symbol">
+                            <div class="asset-row__icon">E</div>
+                            <div>ETH</div>
+                        </div>
+                        <div class="asset-row__stats">
+                            <div class="asset-row__stat">
+                                <div class="asset-row__stat-label">Trades</div>
+                                <div class="asset-row__stat-value">2</div>
+                            </div>
+                            <div class="asset-row__stat">
+                                <div class="asset-row__stat-label">P&L</div>
+                                <div class="asset-row__stat-value table__loss">-$75</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="asset-row">
+                        <div class="asset-row__symbol">
+                            <div class="asset-row__icon">S</div>
+                            <div>SOL</div>
+                        </div>
+                        <div class="asset-row__stats">
+                            <div class="asset-row__stat">
+                                <div class="asset-row__stat-label">Trades</div>
+                                <div class="asset-row__stat-value">1</div>
+                            </div>
+                            <div class="asset-row__stat">
+                                <div class="asset-row__stat-label">P&L</div>
+                                <div class="asset-row__stat-value table__profit">+$230</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="asset-row">
+                        <div class="asset-row__symbol">
+                            <div class="asset-row__icon">A</div>
+                            <div>AAPL</div>
+                        </div>
+                        <div class="asset-row__stats">
+                            <div class="asset-row__stat">
+                                <div class="asset-row__stat-label">Trades</div>
+                                <div class="asset-row__stat-value">1</div>
+                            </div>
+                            <div class="asset-row__stat">
+                                <div class="asset-row__stat-label">P&L</div>
+                                <div class="asset-row__stat-value table__profit">+$140</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+//Стилі для login/register сторінок.
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @include desktop {
+    grid-template-columns: 1fr;
+  }
+}
+
+.auth-page__form-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-6;
+}
+
+.auth-page__art-side {
+  background: linear-gradient(135deg, $bg-secondary 0%, $bg-card 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-12;
+  border-left: 1px solid $border-subtle;
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.auth-page__art {
+  max-width: 400px;
+  text-align: center;
+
+  &-title {
+    font-size: $fs-2xl;
+    font-weight: 700;
+    margin-bottom: $space-4;
+    letter-spacing: -0.02em;
+  }
+
+  &-text {
+    color: $text-secondary;
+    line-height: 1.7;
+  }
+
+  &-quote {
+    margin-top: $space-8;
+    padding: $space-5;
+    background: $bg-card;
+    border: 1px solid $border-subtle;
+    border-radius: $radius-md;
+    font-size: $fs-sm;
+    font-style: italic;
+    color: $text-secondary;
+  }
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 380px;
+
+  &__logo {
+    font-size: $fs-xl;
+    font-weight: 700;
+    color: $accent;
+    margin-bottom: $space-8;
+    letter-spacing: -0.02em;
+  }
+
+  &__title {
+    font-size: $fs-2xl;
+    font-weight: 700;
+    margin-bottom: $space-2;
+    letter-spacing: -0.02em;
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+    font-size: $fs-sm;
+    margin-bottom: $space-6;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    margin-bottom: $space-6;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-5;
+    font-size: $fs-sm;
+
+    a {
+      color: $accent;
+      transition: color $transition-fast;
+
+      &:hover { color: $accent-hover; }
+    }
+  }
+
+  &__footer {
+    margin-top: $space-6;
+    text-align: center;
+    color: $text-secondary;
+    font-size: $fs-sm;
+
+    a {
+      color: $accent;
+      font-weight: 600;
+    }
+  }
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  cursor: pointer;
+  user-select: none;
+  color: $text-secondary;
+
+  input {
+    accent-color: $accent;
+  }
+}

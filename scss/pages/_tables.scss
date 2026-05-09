@@ -1,0 +1,45 @@
+.filters {
+  @include card;
+  margin-bottom: $space-5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  align-items: flex-end;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    min-width: 140px;
+  }
+
+  &__label {
+    font-size: $fs-xs;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+
+  &__actions {
+    margin-left: auto;
+    @include flex-row($space-2);
+  }
+}
+
+.role-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-4;
+  margin-bottom: $space-5;
+  background: $accent-dim;
+  border: 1px solid rgba(88, 229, 197, 0.2);
+  border-radius: $radius-sm;
+  color: $accent;
+  font-size: $fs-sm;
+
+  &__icon {
+    font-size: $fs-md;
+  }
+}

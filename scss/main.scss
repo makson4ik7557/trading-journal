@@ -1,0 +1,14 @@
+// Головний файл, що склеює всі partials у один main.css.Тільки цей файл компілюється — решта _*.scss імпортуються сюди.
+
+@import 'variables'; // щоб усі наступні файли могли користуватися змінними
+@import 'mixins'; // щоб layout/components могли використовувати @include
+@import 'reset'; //скидає дефолти браузера
+@import 'layout'; //структура сторінки
+@import 'components'; // reusable UI
+
+// pages - стилі сторінок (можуть оверрайдити компоненти)
+
+@import 'pages/landing';
+@import 'pages/auth';
+@import 'pages/dashboard';
+@import 'pages/tables';

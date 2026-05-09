@@ -1,0 +1,158 @@
+//Стилі специфічні саме для дашборду
+
+.kpi-card {
+  @include card;
+  position: relative;
+  overflow: hidden;
+
+  &__label {
+    font-size: $fs-xs;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    margin-bottom: $space-3;
+  }
+
+  &__value {
+    font-size: $fs-2xl;
+    font-weight: 700;
+    @include tabular-nums;
+    margin-bottom: $space-2;
+  }
+
+  &__delta {
+    @include flex-row($space-1);
+    font-size: $fs-xs;
+    @include tabular-nums;
+    font-weight: 600;
+
+    &--profit { color: $profit; }
+    &--loss   { color: $loss; }
+  }
+
+  &--profit .kpi-card__value { color: $profit; }
+  &--loss   .kpi-card__value { color: $loss; }
+}
+
+.chart-card {
+  @include card;
+  margin-bottom: $space-6;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-5;
+  }
+
+  &__title {
+    font-size: $fs-md;
+    font-weight: 600;
+  }
+
+  &__tabs {
+    @include flex-row($space-1);
+  }
+
+  &__tab {
+    padding: $space-2 $space-3;
+    font-size: $fs-xs;
+    color: $text-secondary;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: background $transition-fast, color $transition-fast;
+
+    &:hover {
+      background: $bg-elevated;
+      color: $text-primary;
+    }
+
+    &--active {
+      background: $accent-dim;
+      color: $accent;
+    }
+  }
+
+  // Faux grid background — placeholder until real chart in Lab 4
+  &__placeholder {
+    height: 280px;
+    background:
+            linear-gradient(to top, rgba(46, 189, 133, 0.08), transparent 70%),
+            repeating-linear-gradient(to right, transparent 0, transparent 39px, $border-subtle 39px, $border-subtle 40px),
+            repeating-linear-gradient(to top, transparent 0, transparent 39px, $border-subtle 39px, $border-subtle 40px);
+    border-radius: $radius-sm;
+    position: relative;
+    @include flex-center;
+    color: $text-muted;
+    font-size: $fs-xs;
+
+    @include mobile {
+      height: 180px;
+    }
+  }
+}
+
+.recent-trades {
+  @include card;
+  padding: 0;
+
+  &__header {
+    padding: $space-5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $border-subtle;
+  }
+
+  &__title {
+    font-size: $fs-md;
+    font-weight: 600;
+  }
+}
+
+.asset-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-3 0;
+  border-bottom: 1px solid $border-subtle;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__symbol {
+    @include flex-row($space-3);
+    font-weight: 600;
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-full;
+    background: $bg-elevated;
+    @include flex-center;
+    font-size: $fs-xs;
+    font-weight: 700;
+    color: $accent;
+  }
+
+  &__stats {
+    @include flex-row($space-6);
+    text-align: right;
+  }
+
+  &__stat {
+    &-label {
+      font-size: $fs-xs;
+      color: $text-secondary;
+      margin-bottom: 2px;
+    }
+    &-value {
+      @include tabular-nums;
+      font-size: $fs-sm;
+      font-weight: 600;
+    }
+  }
+}

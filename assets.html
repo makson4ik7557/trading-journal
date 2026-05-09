@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assets — Trading Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <div class="sidebar__logo">⊜ Journal</div>
+
+        <nav class="sidebar__nav">
+            <div class="sidebar__section-title">Trading</div>
+            <a href="dashboard.html" class="sidebar__link">Dashboard</a>
+            <a href="trades.html" class="sidebar__link">My Trades</a>
+            <a href="assets.html" class="sidebar__link sidebar__link--active">Assets</a>
+        </nav>
+
+        <nav class="sidebar__nav">
+            <div class="sidebar__section-title">Admin</div>
+            <a href="users.html" class="sidebar__link">Users</a>
+        </nav>
+
+        <nav class="sidebar__nav" style="margin-top: auto;">
+            <a href="login.html" class="sidebar__link">Logout</a>
+        </nav>
+    </aside>
+
+    <header class="header">
+        <div class="header__title">Assets</div>
+        <div class="header__actions">
+            <div class="header__user">
+                <div class="header__avatar">MM</div>
+                <span>Maksym</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+
+            <div class="page-header">
+                <div>
+                    <h1 class="page-header__title">Assets</h1>
+                    <p class="page-header__subtitle">Manage tradeable instruments available to all users</p>
+                </div>
+                <button class="btn btn--primary">+ Add Asset</button>
+            </div>
+
+            <div class="role-hint">
+                <span class="role-hint__icon">👑</span>
+                Admin only — changes here affect every user's trade form.
+            </div>
+
+            <div class="filters">
+                <div class="filters__group">
+                    <label class="filters__label">Market</label>
+                    <select class="select">
+                        <option>All markets</option>
+                        <option>Crypto</option>
+                        <option>Stock</option>
+                        <option>Forex</option>
+                        <option>Commodity</option>
+                    </select>
+                </div>
+
+                <div class="filters__group">
+                    <label class="filters__label">Search</label>
+                    <input class="input" type="text" placeholder="Symbol or name…">
+                </div>
+
+                <div class="filters__actions">
+                    <button class="btn btn--ghost btn--sm">Reset</button>
+                    <button class="btn btn--secondary btn--sm">Apply</button>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>Market</th>
+                        <th>Created</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><strong>BTC</strong></td>
+                        <td>Bitcoin</td>
+                        <td><span class="badge badge--open">Crypto</span></td>
+                        <td>May 7, 2026</td>
+                        <td>
+                            <div class="table__actions">
+                                <button class="btn btn--ghost btn--sm">Edit</button>
+                                <button class="btn btn--danger btn--sm">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>ETH</strong></td>
+                        <td>Ethereum</td>
+                        <td><span class="badge badge--open">Crypto</span></td>
+                        <td>May 7, 2026</td>
+                        <td>
+                            <div class="table__actions">
+                                <button class="btn btn--ghost btn--sm">Edit</button>
+                                <button class="btn btn--danger btn--sm">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>SOL</strong></td>
+                        <td>Solana</td>
+                        <td><span class="badge badge--open">Crypto</span></td>
+                        <td>May 7, 2026</td>
+                        <td>
+                            <div class="table__actions">
+                                <button class="btn btn--ghost btn--sm">Edit</button>
+                                <button class="btn btn--danger btn--sm">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>AAPL</strong></td>
+                        <td>Apple Inc.</td>
+                        <td><span class="badge badge--profit">Stock</span></td>
+                        <td>May 7, 2026</td>
+                        <td>
+                            <div class="table__actions">
+                                <button class="btn btn--ghost btn--sm">Edit</button>
+                                <button class="btn btn--danger btn--sm">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>TSLA</strong></td>
+                        <td>Tesla Inc.</td>
+                        <td><span class="badge badge--profit">Stock</span></td>
+                        <td>May 7, 2026</td>
+                        <td>
+                            <div class="table__actions">
+                                <button class="btn btn--ghost btn--sm">Edit</button>
+                                <button class="btn btn--danger btn--sm">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>NVDA</strong></td>
+                        <td>Nvidia Corp.</td>
+                        <td><span class="badge badge--profit">Stock</span></td>
+                        <td>May 7, 2026</td>
+                        <td>
+                            <div class="table__actions">
+                                <button class="btn btn--ghost btn--sm">Edit</button>
+                                <button class="btn btn--danger btn--sm">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>EURUSD</strong></td>
+                        <td>Euro / US Dollar</td>
+                        <td><span class="badge badge--closed">Forex</span></td>
+                        <td>May 7, 2026</td>
+                        <td>
+                            <div class="table__actions">
+                                <button class="btn btn--ghost btn--sm">Edit</button>
+                                <button class="btn btn--danger btn--sm">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>GOLD</strong></td>
+                        <td>Gold Spot</td>
+                        <td><span class="badge badge--loss">Commodity</span></td>
+                        <td>May 7, 2026</td>
+                        <td>
+                            <div class="table__actions">
+                                <button class="btn btn--ghost btn--sm">Edit</button>
+                                <button class="btn btn--danger btn--sm">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+</div>
+
+</body>
+</html>
