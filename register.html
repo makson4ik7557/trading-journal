@@ -12,49 +12,50 @@
 <body>
 <div class="auth-page">
     <div class="auth-page__form-side">
-        <div class="auth-form">
+        <form id="register-form" class="auth-form" novalidate>
             <div class="auth-form__logo">⊜ Journal</div>
             <h1 class="auth-form__title">Create account</h1>
             <p class="auth-form__subtitle">Start tracking your trades today</p>
 
             <div class="auth-form__fields">
                 <div class="input-group">
-                    <label class="input-group__label">Name</label>
-                    <input class="input" type="text" placeholder="John Smith">
+                    <label class="input-group__label" for="name">Name</label>
+                    <input id="name" class="input" type="text" placeholder="John Smith" required>
                 </div>
                 <div class="input-group">
-                    <label class="input-group__label">Email</label>
-                    <input class="input" type="email" placeholder="johnsmith@example.com">
+                    <label class="input-group__label" for="email">Email</label>
+                    <input id="email" class="input" type="email" placeholder="you@example.com" required>
                 </div>
                 <div class="input-group">
-                    <label class="input-group__label">Password</label>
-                    <input class="input" type="password" placeholder="At least 6 characters">
+                    <label class="input-group__label" for="password">Password</label>
+                    <input id="password" class="input" type="password" placeholder="At least 6 characters" required>
                 </div>
             </div>
 
-            <button class="btn btn--primary btn--block">Create account</button>
+            <button id="register-submit" type="submit" class="btn btn--primary btn--block">Create account</button>
+
+            <div id="register-error" style="color:var(--loss); margin-top:12px; font-size:13px; min-height:18px;"></div>
+
             <div class="auth-form__footer">
                 Already have an account? <a href="login.html">Log in</a>
             </div>
-        </div>
+        </form>
     </div>
 
     <div class="auth-page__art-side">
         <div class="auth-page__art">
-
             <h2 class="auth-page__art-title">Trade smarter, not harder</h2>
             <p class="auth-page__art-text">
                 Log every trade. Spot patterns in your wins and losses.
                 Become the trader you want to be.
             </p>
-
             <div class="auth-page__art-quote">
                 "What gets measured gets managed."
             </div>
-
         </div>
     </div>
 </div>
 
+<script type="module" src="js/pages/register.js"></script>
 </body>
 </html>

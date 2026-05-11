@@ -23,13 +23,13 @@
             <a href="assets.html" class="sidebar__link">Assets</a>
         </nav>
 
-        <nav class="sidebar__nav">
+        <nav class="sidebar__nav" data-admin-only>
             <div class="sidebar__section-title">Admin</div>
             <a href="users.html" class="sidebar__link">Users</a>
         </nav>
 
         <nav class="sidebar__nav" style="margin-top: auto;">
-            <a href="login.html" class="sidebar__link">Logout</a>
+            <a href="#" class="sidebar__link" data-logout>Logout</a>
         </nav>
     </aside>
 
@@ -37,8 +37,8 @@
         <div class="header__title">My Trades</div>
         <div class="header__actions">
             <div class="header__user">
-                <div class="header__avatar">MM</div>
-                <span>Maksym</span>
+                <div class="header__avatar" data-user-avatar>?</div>
+                <span data-user-name>—</span>
             </div>
         </div>
     </header>
@@ -51,54 +51,47 @@
                     <h1 class="page-header__title">My Trades</h1>
                     <p class="page-header__subtitle">All your logged positions in one place</p>
                 </div>
-                <button class="btn btn--primary">+ New Trade</button>
             </div>
 
             <div class="filters">
                 <div class="filters__group">
-                    <label class="filters__label">Asset</label>
-                    <select class="select">
-                        <option>All assets</option>
-                        <option>BTC</option>
-                        <option>ETH</option>
-                        <option>SOL</option>
-                        <option>AAPL</option>
-                        <option>TSLA</option>
-                        <option>NVDA</option>
+                    <label class="filters__label" for="filter-asset">Asset</label>
+                    <select id="filter-asset" class="select">
+                        <option value="">All assets</option>
                     </select>
                 </div>
 
                 <div class="filters__group">
-                    <label class="filters__label">Side</label>
-                    <select class="select">
-                        <option>All sides</option>
-                        <option>Buy</option>
-                        <option>Sell</option>
+                    <label class="filters__label" for="filter-side">Side</label>
+                    <select id="filter-side" class="select">
+                        <option value="">All sides</option>
+                        <option value="buy">Buy</option>
+                        <option value="sell">Sell</option>
                     </select>
                 </div>
 
                 <div class="filters__group">
-                    <label class="filters__label">Status</label>
-                    <select class="select">
-                        <option>All</option>
-                        <option>Open</option>
-                        <option>Closed</option>
+                    <label class="filters__label" for="filter-status">Status</label>
+                    <select id="filter-status" class="select">
+                        <option value="">All</option>
+                        <option value="open">Open</option>
+                        <option value="closed">Closed</option>
                     </select>
                 </div>
 
                 <div class="filters__group">
-                    <label class="filters__label">From</label>
-                    <input class="input" type="date">
+                    <label class="filters__label" for="filter-from">From</label>
+                    <input id="filter-from" class="input" type="date">
                 </div>
 
                 <div class="filters__group">
-                    <label class="filters__label">To</label>
-                    <input class="input" type="date">
+                    <label class="filters__label" for="filter-to">To</label>
+                    <input id="filter-to" class="input" type="date">
                 </div>
 
                 <div class="filters__actions">
-                    <button class="btn btn--ghost btn--sm">Reset</button>
-                    <button class="btn btn--secondary btn--sm">Apply</button>
+                    <button id="filter-reset" class="btn btn--ghost btn--sm">Reset</button>
+                    <button id="filter-apply" class="btn btn--secondary btn--sm">Apply</button>
                 </div>
             </div>
 
@@ -117,119 +110,8 @@
                         <th></th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td><strong>BTC</strong></td>
-                        <td><span class="badge badge--buy">Buy</span></td>
-                        <td class="table__num">42,000.00</td>
-                        <td class="table__num">45,500.00</td>
-                        <td class="table__num">0.1</td>
-                        <td class="table__profit">+$350.00</td>
-                        <td><span class="badge badge--closed">Closed</span></td>
-                        <td>Apr 22</td>
-                        <td>
-                            <div class="table__actions">
-                                <button class="btn btn--ghost btn--sm">Edit</button>
-                                <button class="btn btn--danger btn--sm">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>ETH</strong></td>
-                        <td><span class="badge badge--buy">Buy</span></td>
-                        <td class="table__num">2,800.00</td>
-                        <td class="table__num">2,650.00</td>
-                        <td class="table__num">1.5</td>
-                        <td class="table__loss">-$225.00</td>
-                        <td><span class="badge badge--closed">Closed</span></td>
-                        <td>Apr 23</td>
-                        <td>
-                            <div class="table__actions">
-                                <button class="btn btn--ghost btn--sm">Edit</button>
-                                <button class="btn btn--danger btn--sm">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>SOL</strong></td>
-                        <td><span class="badge badge--buy">Buy</span></td>
-                        <td class="table__num">145.00</td>
-                        <td class="table__num">168.00</td>
-                        <td class="table__num">10</td>
-                        <td class="table__profit">+$230.00</td>
-                        <td><span class="badge badge--closed">Closed</span></td>
-                        <td>May 1</td>
-                        <td>
-                            <div class="table__actions">
-                                <button class="btn btn--ghost btn--sm">Edit</button>
-                                <button class="btn btn--danger btn--sm">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>AAPL</strong></td>
-                        <td><span class="badge badge--sell">Sell</span></td>
-                        <td class="table__num">195.00</td>
-                        <td class="table__num">188.00</td>
-                        <td class="table__num">20</td>
-                        <td class="table__profit">+$140.00</td>
-                        <td><span class="badge badge--closed">Closed</span></td>
-                        <td>May 3</td>
-                        <td>
-                            <div class="table__actions">
-                                <button class="btn btn--ghost btn--sm">Edit</button>
-                                <button class="btn btn--danger btn--sm">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>TSLA</strong></td>
-                        <td><span class="badge badge--buy">Buy</span></td>
-                        <td class="table__num">220.00</td>
-                        <td class="table__num">215.00</td>
-                        <td class="table__num">10</td>
-                        <td class="table__loss">-$50.00</td>
-                        <td><span class="badge badge--closed">Closed</span></td>
-                        <td>May 2</td>
-                        <td>
-                            <div class="table__actions">
-                                <button class="btn btn--ghost btn--sm">Edit</button>
-                                <button class="btn btn--danger btn--sm">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>NVDA</strong></td>
-                        <td><span class="badge badge--buy">Buy</span></td>
-                        <td class="table__num">920.00</td>
-                        <td class="table__num">—</td>
-                        <td class="table__num">5</td>
-                        <td class="table__num">—</td>
-                        <td><span class="badge badge--open">Open</span></td>
-                        <td>May 4</td>
-                        <td>
-                            <div class="table__actions">
-                                <button class="btn btn--ghost btn--sm">Edit</button>
-                                <button class="btn btn--danger btn--sm">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>SOL</strong></td>
-                        <td><span class="badge badge--sell">Sell</span></td>
-                        <td class="table__num">175.00</td>
-                        <td class="table__num">—</td>
-                        <td class="table__num">8</td>
-                        <td class="table__num">—</td>
-                        <td><span class="badge badge--open">Open</span></td>
-                        <td>May 5</td>
-                        <td>
-                            <div class="table__actions">
-                                <button class="btn btn--ghost btn--sm">Edit</button>
-                                <button class="btn btn--danger btn--sm">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
+                    <tbody data-trades-tbody>
+                    <tr><td colspan="9" style="text-align:center; padding:24px;">Loading…</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -239,5 +121,6 @@
 
 </div>
 
+<script type="module" src="js/pages/trades.js"></script>
 </body>
 </html>

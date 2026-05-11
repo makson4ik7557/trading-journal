@@ -23,13 +23,13 @@
             <a href="assets.html" class="sidebar__link sidebar__link--active">Assets</a>
         </nav>
 
-        <nav class="sidebar__nav">
+        <nav class="sidebar__nav" data-admin-only>
             <div class="sidebar__section-title">Admin</div>
             <a href="users.html" class="sidebar__link">Users</a>
         </nav>
 
         <nav class="sidebar__nav" style="margin-top: auto;">
-            <a href="login.html" class="sidebar__link">Logout</a>
+            <a href="#" class="sidebar__link" data-logout>Logout</a>
         </nav>
     </aside>
 
@@ -37,8 +37,8 @@
         <div class="header__title">Assets</div>
         <div class="header__actions">
             <div class="header__user">
-                <div class="header__avatar">MM</div>
-                <span>Maksym</span>
+                <div class="header__avatar" data-user-avatar>?</div>
+                <span data-user-name>—</span>
             </div>
         </div>
     </header>
@@ -198,6 +198,6 @@
     </main>
 
 </div>
-
+<script type="module" src="js/pages/admin-stub.js"></script>
 </body>
 </html>

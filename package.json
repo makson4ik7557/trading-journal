@@ -1,17 +1,21 @@
 {
   "name": "trading-journal-frontend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Trading journal - Web design course at Lviv Polytechnic",
+  "main": "index.html",
+  "type": "module",
   "scripts": {
     "sass": "sass --watch scss/main.scss css/main.css --silence-deprecation=import,global-builtin,color-functions",
-    "sass:build": "sass scss/main.scss css/main.css --style compressed --silence-deprecation=import,global-builtin,color-functions"
+    "sass:build": "sass scss/main.scss css/main.css --style compressed --silence-deprecation=import,global-builtin,color-functions",
+    "lint": "eslint js/",
+    "lint:fix": "eslint js/ --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
-    "sass": "^1.99.0"
+    "sass": "^1.93.2",
+    "eslint": "^9.15.0",
+    "globals": "^15.12.0"
   }
 }
