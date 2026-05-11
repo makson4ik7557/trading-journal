@@ -40,7 +40,7 @@ export function renderUserChrome() {
       el.style.display = 'none';
     });
   }
-
+//labuba
   document.querySelectorAll('[data-logout]').forEach((el) => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
