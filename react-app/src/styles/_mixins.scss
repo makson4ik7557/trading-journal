@@ -1,0 +1,53 @@
+//Reusable шматки SCSS
+
+@mixin mobile {
+  @media (max-width: #{$bp-mobile}) { @content; }
+}
+
+@mixin tablet {
+  @media (max-width: #{$bp-tablet}) { @content; }
+}
+
+@mixin desktop {
+  @media (max-width: #{$bp-desktop}) { @content; }
+}
+
+@mixin from-tablet {
+  @media (min-width: #{$bp-tablet + 1}) { @content; }
+}
+
+@mixin from-desktop {
+  @media (min-width: #{$bp-desktop + 1}) { @content; }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-row($gap: $space-3) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin card {
+  background: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-md;
+  padding: $space-5;
+}
+
+// Моноширинні цифри однакової ширини — для стовпців цін та прибутків і збитків
+@mixin tabular-nums {
+  font-family: $font-mono;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}

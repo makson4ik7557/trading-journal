@@ -1,0 +1,181 @@
+//Структурні штуки: контейнер сторінки, sidebar, header, grid-системи.
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 64px 1fr;
+  grid-template-areas:
+    'sidebar header'
+    'sidebar main';
+  min-height: 100vh;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'header'
+      'main';
+  }
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: $bg-secondary;
+  border-right: 1px solid $border-subtle;
+  padding: $space-5 $space-4;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  @include tablet {
+    display: none;
+  }
+
+  &__logo {
+    font-size: $fs-lg;
+    font-weight: 700;
+    color: $accent;
+    padding: 0 $space-3;
+    letter-spacing: -0.02em;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-3 $space-3;
+    border-radius: $radius-sm;
+    color: $text-secondary;
+    font-size: $fs-sm;
+    transition: background $transition-fast, color $transition-fast;
+
+    &:hover {
+      background: $bg-elevated;
+      color: $text-primary;
+    }
+
+    &--active {
+      background: $accent-dim;
+      color: $accent;
+
+      &:hover {
+        background: $accent-dim;
+        color: $accent;
+      }
+    }
+  }
+
+  &__section-title {
+    font-size: $fs-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $text-muted;
+    padding: 0 $space-3;
+    margin-bottom: $space-2;
+  }
+}
+
+.header {
+  grid-area: header;
+  background: $bg-primary;
+  border-bottom: 1px solid $border-subtle;
+  padding: 0 $space-6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title {
+    font-size: $fs-md;
+    font-weight: 600;
+  }
+
+  &__actions {
+    @include flex-row($space-3);
+  }
+
+  &__user {
+    @include flex-row($space-2);
+    padding: $space-2 $space-3;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: $bg-elevated;
+    }
+  }
+
+  &__avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: $radius-full;
+    background: $accent-dim;
+    color: $accent;
+    @include flex-center;
+    font-size: $fs-xs;
+    font-weight: 600;
+  }
+}
+
+.main {
+  grid-area: main;
+  padding: $space-6;
+  overflow-y: auto;
+
+  @include mobile {
+    padding: $space-4;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-6;
+  flex-wrap: wrap;
+  gap: $space-3;
+
+  &__title {
+    font-size: $fs-2xl;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  &__subtitle {
+    font-size: $fs-sm;
+    color: $text-secondary;
+    margin-top: $space-1;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: $space-4;
+
+  &--cols-2 { grid-template-columns: repeat(2, 1fr); }
+  &--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  &--cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+  @include desktop {
+    &--cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @include mobile {
+    &--cols-2,
+    &--cols-3,
+    &--cols-4 {
+      grid-template-columns: 1fr;
+    }
+  }
+}

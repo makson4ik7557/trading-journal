@@ -1,0 +1,246 @@
+//Дрібні UI-блоки: кнопки, інпути, картки, бейджі.
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-3 $space-5;
+  border-radius: $radius-sm;
+  font-size: $fs-sm;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast,
+  border-color $transition-fast, transform $transition-fast;
+  white-space: nowrap;
+  user-select: none;
+
+  &:active { transform: scale(0.98); }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--primary {
+    background: $accent;
+    color: $bg-primary;
+
+    &:hover:not(:disabled) { background: $accent-hover; }
+  }
+
+  &--secondary {
+    background: $bg-elevated;
+    color: $text-primary;
+    border: 1px solid $border-strong;
+
+    &:hover:not(:disabled) { background: lighten($bg-elevated, 4%); }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $text-secondary;
+
+    &:hover:not(:disabled) {
+      background: $bg-elevated;
+      color: $text-primary;
+    }
+  }
+
+  &--danger {
+    background: $loss-bg;
+    color: $loss;
+
+    &:hover:not(:disabled) { background: rgba(246, 70, 93, 0.18); }
+  }
+
+  &--sm {
+    padding: $space-2 $space-3;
+    font-size: $fs-xs;
+  }
+
+  &--lg {
+    padding: $space-4 $space-6;
+    font-size: $fs-md;
+  }
+
+  &--block { width: 100%; }
+}
+
+// Card
+.card {
+  @include card;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-4;
+  }
+
+  &__title {
+    font-size: $fs-sm;
+    color: $text-secondary;
+    font-weight: 500;
+  }
+
+  &__value {
+    font-size: $fs-2xl;
+    font-weight: 700;
+    @include tabular-nums;
+    margin-bottom: $space-1;
+  }
+
+  &__delta {
+    font-size: $fs-xs;
+    @include tabular-nums;
+
+    &--profit { color: $profit; }
+    &--loss   { color: $loss; }
+  }
+}
+
+// Badge
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $space-2;
+  border-radius: $radius-sm;
+  font-size: $fs-xs;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  &--profit { background: $profit-bg; color: $profit; }
+  &--loss   { background: $loss-bg;   color: $loss; }
+  &--open   { background: $accent-dim; color: $accent; }
+  &--closed { background: $bg-elevated; color: $text-secondary; }
+  &--buy    { background: $profit-bg; color: $profit; }
+  &--sell   { background: $loss-bg;   color: $loss; }
+}
+
+// Input
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  &__label {
+    font-size: $fs-xs;
+    color: $text-secondary;
+    font-weight: 500;
+  }
+}
+
+.input {
+  background: $bg-input;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-sm;
+  padding: $space-3 $space-4;
+  font-size: $fs-sm;
+  color: $text-primary;
+  transition: border-color $transition-fast, background $transition-fast;
+  width: 100%;
+
+  &::placeholder { color: $text-muted; }
+
+  &:hover { border-color: $border-strong; }
+
+  &:focus {
+    border-color: $accent;
+    background: $bg-secondary;
+  }
+
+  &--error { border-color: $loss; }
+}
+
+.input--num {
+  @include tabular-nums;
+}
+
+.select {
+  @extend .input;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%2397A4A8' stroke-width='2' viewBox='0 0 24 24'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right $space-4 center;
+  padding-right: $space-10;
+}
+
+// Table
+.table-wrapper {
+  @include card;
+  padding: 0;
+  overflow-x: auto;
+}
+
+.table {
+  font-size: $fs-sm;
+
+  th, td {
+    padding: $space-3 $space-4;
+    text-align: left;
+    border-bottom: 1px solid $border-subtle;
+  }
+
+  th {
+    font-size: $fs-xs;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: $text-secondary;
+    background: $bg-secondary;
+    position: sticky;
+    top: 0;
+  }
+
+  td {
+    color: $text-primary;
+  }
+
+  tbody tr {
+    transition: background $transition-fast;
+
+    &:hover { background: $bg-elevated; }
+
+    &:last-child td { border-bottom: none; }
+  }
+
+  &__num {
+    @include tabular-nums;
+    text-align: right;
+  }
+
+  &__profit { color: $profit; @include tabular-nums; }
+  &__loss   { color: $loss;   @include tabular-nums; }
+
+  &__actions {
+    @include flex-row($space-2);
+    justify-content: flex-end;
+  }
+}
+
+.empty-state {
+  padding: $space-12 $space-6;
+  text-align: center;
+  color: $text-secondary;
+
+  &__title {
+    font-size: $fs-md;
+    color: $text-primary;
+    margin-bottom: $space-2;
+  }
+
+  &__text {
+    font-size: $fs-sm;
+    margin-bottom: $space-5;
+  }
+}
+
+.divider {
+  height: 1px;
+  background: $border-subtle;
+  margin: $space-5 0;
+}
