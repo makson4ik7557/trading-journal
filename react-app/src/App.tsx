@@ -5,7 +5,10 @@ import { Layout } from './components/Layout';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { UsersPage } from './pages/UsersPage';
-import { DashboardPage, TradesPage, AssetsPage } from './pages/StubPages';
+import DashboardPage from './pages/DashboardPage';
+import TradesPage from './pages/TradesPage';
+import AssetsPage from './pages/AssetsPage';
+import LandingPage from './pages/LandingPage'
 
 export function App() {
     return (
@@ -25,9 +28,8 @@ export function App() {
                         <Route path="/assets" element={<AssetsPage />} />
                         <Route path="/users" element={<AdminRoute><UsersPage /></AdminRoute>} />
                     </Route>
-
-                    <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                    <Route path="*" element={<Navigate to="/dashboard" replace />} />
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </BrowserRouter>
         </AuthProvider>

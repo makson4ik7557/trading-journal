@@ -244,3 +244,176 @@
   background: $border-subtle;
   margin: $space-5 0;
 }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #1e1e2e;
+  color: #e0e0e0;  border-radius: 8px;
+  padding: 24px;
+  min-width: 400px;
+  max-width: 600px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 10px 16px;
+    text-align: left;
+  }
+
+  th {
+    border-bottom: 1px solid #333;
+  }
+
+  td button {
+    margin-right: 8px;
+  }
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  input, select {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #2a2a3e;
+    color: #e0e0e0;
+  }
+}
+
+// Filters bar (used on Trades page)
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+
+  .input {
+    min-width: 160px;
+    max-width: 220px;
+  }
+}
+
+// KPI grid (used on Dashboard)
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kpi-card {
+  background: var(--bg-card, #0F172A);
+  border: 1px solid var(--border-color, #1F2937);
+  border-radius: 12px;
+  padding: 20px;
+
+  &__label {
+    font-size: 12px;
+    color: var(--text-muted, #6B7280);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  &__value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary, #F9FAFB);
+
+    &--small {
+      font-size: 18px;
+    }
+  }
+}
+
+// P&L coloring (used on Dashboard + Trades)
+.pnl {
+  font-weight: 600;
+
+  &--profit {
+    color: #2EBD85;
+  }
+
+  &--loss {
+    color: #F6465D;
+  }
+}
+
+// Modal styles (used by Modal component)
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal-content {
+  background: var(--bg-card, #0F172A);
+  border: 1px solid var(--border-color, #1F2937);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color, #1F2937);
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    color: var(--text-muted, #6B7280);
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+
+    &:hover {
+      color: var(--text-primary, #F9FAFB);
+    }
+  }
+}
+
+.modal-body {
+  padding: 24px;
+}
