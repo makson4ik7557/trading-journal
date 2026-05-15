@@ -3,6 +3,7 @@ import type { Stats, Trade } from '../types'
 import { api } from '../api'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
 import { formatUSD, formatUSDCompact, formatUSDSigned, formatPercent, formatNumber } from '../utils/format'
+import LiveTicker from '../components/LiveTicker'
 
 export default function DashboardPage() {
     const [stats, setStats] = useState<Stats | null>(null)
@@ -51,6 +52,8 @@ export default function DashboardPage() {
 
     return (
         <div>
+            <LiveTicker />
+
             <div className="page-header">
                 <div>
                     <h1 className="page-header__title">Dashboard</h1>
