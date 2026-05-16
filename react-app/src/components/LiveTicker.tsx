@@ -1,7 +1,7 @@
 import { usePriceUpdates } from '../hooks/usePriceUpdates'
 import { formatUSD } from '../utils/format'
 
-const SYMBOLS = ['BTC', 'ETH', 'SOL', 'AAPL', 'TSLA', 'NVDA']
+const SYMBOLS = ['BTC', 'ETH', 'SOL']
 
 export default function LiveTicker() {
     const { prices, connected } = usePriceUpdates()

@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { createServer } from 'http';
 import { Server as SocketServer } from 'socket.io';
+import WebSocket from 'ws';
 
 import authRouter from './routes/auth.js';
 import usersRouter from './routes/users.js';
@@ -42,33 +43,75 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('[ws] disconnected:', socket.id);
   });
-
-  // Client can request to subscribe to specific symbols if needed
-  socket.on('subscribe', (symbols) => {
-    if (Array.isArray(symbols)) socket.data.symbols = symbols;
-  });
 });
 
-// Mock price ticker — emits random updates every 3s
-const MOCK_SYMBOLS = ['BTC', 'ETH', 'SOL', 'AAPL', 'TSLA', 'NVDA'];
-const lastPrice = {
-  BTC: 45000, ETH: 2700, SOL: 160,
-  AAPL: 192, TSLA: 215, NVDA: 920,
+// === Binance WebSocket bridge ===
+// Підключаємось до публічного потоку Binance, отримуємо real-time ціни,
+// ретранслюємо клієнтам через свій socket.io канал.
+// Це класичний fan-out pattern: одне external з'єднання → багато internal клієнтів.
+
+const SYMBOL_MAP = {
+  btcusdt: 'BTC',
+  ethusdt: 'ETH',
+  solusdt: 'SOL',
 };
 
-setInterval(() => {
-  const symbol = MOCK_SYMBOLS[Math.floor(Math.random() * MOCK_SYMBOLS.length)];
-  // ±0.5% drift
-  const delta = (Math.random() - 0.5) * 0.01;
-  lastPrice[symbol] = Number((lastPrice[symbol] * (1 + delta)).toFixed(2));
+const STREAMS = Object.keys(SYMBOL_MAP).map((s) => `${s}@ticker`).join('/');
+const BINANCE_WS_URL = `wss://stream.binance.com:9443/stream?streams=${STREAMS}`;
 
-  io.emit('price:update', {
-    symbol,
-    price: lastPrice[symbol],
-    change_percent: Number((delta * 100).toFixed(3)),
-    at: new Date().toISOString(),
+let binanceSocket = null;
+let lastEmit = {};
+
+function connectToBinance() {
+  console.log('[binance] connecting to', BINANCE_WS_URL);
+  binanceSocket = new WebSocket(BINANCE_WS_URL);
+
+  binanceSocket.on('open', () => {
+    console.log('[binance] connected, subscribed to:', Object.keys(SYMBOL_MAP).join(', '));
   });
-}, 3000);
+
+  binanceSocket.on('message', (raw) => {
+    try {
+      const msg = JSON.parse(raw.toString());
+      const streamName = msg.stream; // e.g. "btcusdt@ticker"
+      const data = msg.data;
+      if (!streamName || !data) return;
+
+      const lowerSymbol = streamName.split('@')[0];
+      const symbol = SYMBOL_MAP[lowerSymbol];
+      if (!symbol) return;
+
+      // Throttle: не частіше ніж раз на 1000ms на символ.
+      // Binance шле кілька оновлень на секунду, для UI це занадто часто.
+      const now = Date.now();
+      if (lastEmit[symbol] && now - lastEmit[symbol] < 1000) return;
+      lastEmit[symbol] = now;
+
+      const price = Number(parseFloat(data.c).toFixed(2));
+      const changePercent = Number(parseFloat(data.P).toFixed(3));
+
+      io.emit('price:update', {
+        symbol,
+        price,
+        change_percent: changePercent,
+        at: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error('[binance] parse error:', err.message);
+    }
+  });
+
+  binanceSocket.on('error', (err) => {
+    console.error('[binance] socket error:', err.message);
+  });
+
+  binanceSocket.on('close', () => {
+    console.log('[binance] disconnected, reconnecting in 5s...');
+    setTimeout(connectToBinance, 5000);
+  });
+}
+
+connectToBinance();
 
 export { app, io };
 
